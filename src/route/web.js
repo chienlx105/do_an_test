@@ -1,11 +1,20 @@
 import express from "express";
-import { getHome } from "../controller/homeController";
+import {
+  getAllUser,
+  getUserById,
+  getPageAdd,
+  getAddUser,
+} from "../controller/homeController";
 
 let router = express.Router();
 
 const initWebRoute = (app) => {
-  router.get("/", getHome);
+  router.get("/get/alluser", getAllUser);
+  router.get("/get/user/:uid", getUserById);
 
+  //add user
+  router.get("/post/add-user", getPageAdd);
+  router.post("/post/addNewUser", getAddUser);
   app.use("/", router);
 };
 
